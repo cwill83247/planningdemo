@@ -1,9 +1,12 @@
+
+import os
+from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import openai
 
-OPENAI_API_KEY='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'
+openai.api_key = 
 
 @csrf_exempt
 def chatbot(request):
