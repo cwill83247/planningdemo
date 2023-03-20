@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function ask_question(question) {
+            $.ajax({
+                type: "POST",
+                url: "/planningdemoapp",
+                data: {"question": question},
+                success: function(response) {
+                    $("#chatlog").append("<p><strong>You:</strong> " + question + "</p>");
+                    $("#chatlog").append("<p><strong>Bot:</strong> " + response.answer + "</p>");
+                },
+                error: function(xhr, status, error) {
+                    alert("Error: " + error);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            $("#chatinput").keypress(function(event) {
+                if (event.which == 13) {
+                    var question = $("#chatinput").val();
+                    $("#chatinput").val("");
+                    ask_question(question);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <div id="chatlog"></div>
+    <input type="text" id="chatinput" placeholder="Type your question here">
+</body>
+</html>
