@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import openai
-
-openai.api_key = 
+API_KEY = os.environ.get ("OPENAI_API_KEY", "API Key error")
+openai.api_key = API_KEY      # this needs ot pull from environment variable or .env file !!!
 
 @csrf_exempt
 def chatbot(request):

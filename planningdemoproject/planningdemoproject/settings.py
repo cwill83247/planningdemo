@@ -102,7 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # OPEN AI KEY 
 
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
+# set in .venv OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 
 # Internationalization
